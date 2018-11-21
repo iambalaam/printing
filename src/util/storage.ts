@@ -9,3 +9,10 @@ export const getCookies = (): Cookies => {
         });
     return cookies;
 }
+
+export const setCookie = (name: string, value: string, days = 365) => {
+    const expDate = new Date();
+    expDate.setDate(expDate.getDate() + days);
+    window.document.cookie = `${name}=${value}; expires=${expDate.toUTCString()}; path=/`;
+}
+

@@ -1,9 +1,13 @@
 export const requestDevice = async (serialNumber?: string) => {
-    return await (window.navigator as any).usb.requestDevice({
-        filters: serialNumber
-            ? [{ serialNumber }]
-            : []
-    })
+    try {
+        return await (window.navigator as any).usb.requestDevice({
+            filters: serialNumber
+                ? [{ serialNumber }]
+                : []
+        })
+    } catch (e) {
+        if (e.message !== 'No device selected.') throw e;
+    }
 }
 
 

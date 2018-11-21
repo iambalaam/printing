@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { getCookies } from './util/storage';
+import { getCookies, setCookie } from './util/storage';
 import { requestDevice } from './usb/usb';
 
 interface AppState {
@@ -19,8 +19,12 @@ class App extends Component<{}, AppState> {
     }
 
     setPrinter = async () => {
-        if (!this.state.printer) {
-            this.setState({ printer: await requestDevice() });
+        const printer = await requestDevice(this.state.serialNumber);
+        if (printer) {
+            setCookie('serialNumber', printer.serialNumber);
+            if (!this.state.printer) {
+                this.setState({ printer, serialNumber: printer.serialNumber });
+            }
         }
     }
 
