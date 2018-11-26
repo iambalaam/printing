@@ -2,7 +2,7 @@ import * as React from 'react';
 import printer from './printer';
 import './App.css';
 import { getCookies, setCookie } from './util/storage';
-import { requestDevice } from './usb/usb';
+import { requestDevice, connectToDevice, sendText } from './usb/usb';
 
 interface AppState {
     serialNumber: string
@@ -25,6 +25,8 @@ class App extends React.Component<{}, AppState> {
             if (!this.state.printer) {
                 this.setState({ printer, serialNumber: printer.serialNumber });
             }
+            await connectToDevice(printer);
+            await sendText(printer, 'This is not your average receipt');
         }
     }
 
