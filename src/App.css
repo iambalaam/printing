@@ -2,9 +2,13 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
+.printer {
+  font-size: 40vmin;
   height: 40vmin;
+  margin: 0;
+}
+.printer:hover {
+  animation: printer-wobble infinite 200ms ease-in-out;
 }
 
 .App-header {
@@ -22,11 +26,11 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes printer-wobble {
+  0%, 100% {
+    transform: rotate(-2deg);
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    transform: rotate(2deg);
   }
 }

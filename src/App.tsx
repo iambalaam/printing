@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import printer from './printer';
 import './App.css';
 import { getCookies, setCookie } from './util/storage';
 import { requestDevice } from './usb/usb';
@@ -32,18 +32,7 @@ class App extends Component<{}, AppState> {
         return (
             <div className="App">
                 <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" onClick={this.setPrinter} />
-                    <p>
-                        Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-                    <a
-                        className="App-link"
-                        href="https://reactjs.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Learn React
-          </a>
+                    <img className="printer" src={printer} onClick={this.setPrinter} />
                 </header>
             </div>
         );
