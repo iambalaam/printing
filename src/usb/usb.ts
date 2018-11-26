@@ -1,6 +1,6 @@
-export const requestDevice = async (serialNumber?: string) => {
+export const requestDevice = async (serialNumber?: string): Promise<USBDevice | undefined> => {
     try {
-        return await (window.navigator as any).usb.requestDevice({
+        return await window.navigator.usb.requestDevice({
             filters: serialNumber
                 ? [{ serialNumber }]
                 : []
